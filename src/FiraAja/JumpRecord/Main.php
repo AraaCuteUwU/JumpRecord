@@ -20,6 +20,7 @@ class Main extends PluginBase implements Listener {
 		self::$instance = $this;
 		$this->saveResource("dataJump.yml");
 		$this->dataJump = new Config($this->getDataFolder() . "dataJump.yml", Config::YAML);
+		$this->getServer()->getCommandMap()->register("JumpRecord", new TopJumpCommand("topjump", $this));
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 	
@@ -49,5 +50,9 @@ class Main extends PluginBase implements Listener {
 	
 	public function getJump(Player $player){
 		return $this->dataJump->getAll()[$player->getName()]["jump"];
+	}
+	
+	public function getAllJump(){
+		return $this->dataJump->getAll();
 	}
 }
