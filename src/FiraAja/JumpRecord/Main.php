@@ -50,4 +50,8 @@ class Main extends PluginBase implements Listener {
 	public function getJump(Player $player){
 		return $this->dataJump->getAll()[$player->getName()]["jump"];
 	}
+
+        public function getAllJump(){
+		return $this->dataJump->getAll();
+	}
 }
